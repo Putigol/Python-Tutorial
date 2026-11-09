@@ -1,34 +1,43 @@
-# ------------------------------------------------
-# EXERCISE 1 MAD LIBS
-# ------------------------------------------------
-adjective1 = input("Enter an adjective: ")
-noun = input("Enter a noun: ")
-adjective2 = input("Enter an adjective: ")
-verb = input("Enter a verb: ")
-adjective3 = input("Enter an adjective: ")
+friends = 0
+friends += 1  # Tăng lên 1
 
-print(f"Today I went to a {adjective1} zoo.")
-print(f"In an exhibit, I saw {noun}.")
-print(f"{noun} was {adjective2} and {verb}ing.")
-print(f"I was {adjective3}!")
+# Toán tử số học cơ bản
+friends -= 2
+friends *= 3
+friends /= 2
+friends **= 2  # Lũy thừa
+remainder = 10 % 3  # Chia lấy dư
 
-# ------------------------------------------------
-# EXERCISE 2 AREA CALC
-# ------------------------------------------------
-length = float(input("Enter the length: "))
-width = float(input("Enter the width: "))
+# 2. Các hàm toán học tích hợp (Built-in Math Functions)
+result = round(3.14)   # Làm tròn
+result = abs(-4)       # Giá trị tuyệt đối
+result = pow(4, 3)     # Lũy thừa (4^3)
+result = max(3.14, 4, 5) # Tìm giá trị lớn nhất
+result = min(3.14, 4, 5) # Tìm giá trị nhỏ nhất
 
-area = length * width
-print(f"The area is: {area}cm^2")
+# 3. Module Math
+import math
 
-# ------------------------------------------------
-# EXERCISE 3 SHOPPING CART
-# ------------------------------------------------
-item = input("What item would you like to buy?: ")
-price = float(input("What is the price?: "))
-quantity = int(input("How many would you like?: "))
+print(math.pi)    # Giá trị PI
+print(math.e)     # Hằng số e
+result = math.sqrt(9) # Căn bậc hai
+result = math.ceil(9.1) # Làm tròn lên
+result = math.floor(9.9) # Làm tròn xuống
 
-total = price * quantity
+# 4. Bài tập thực hành
+import math
 
-print(f"You have bought {quantity} x {item}/s")
-print(f"Your total is: ${round(total, 2)}")
+# Bài 1: Chu vi hình tròn
+radius = float(input("Nhập bán kính: "))
+circumference = 2 * math.pi * radius
+print(f"Chu vi là: {round(circumference, 2)}")
+
+# Bài 2: Diện tích hình tròn
+area = math.pi * pow(radius, 2)
+print(f"Diện tích là: {round(area, 2)}")
+
+# Bài 3: Tính cạnh huyền tam giác vuông
+a = float(input("Nhập cạnh a: "))
+b = float(input("Nhập cạnh b: "))
+c = math.sqrt(pow(a, 2) + pow(b, 2))
+print(f"Cạnh huyền c là: {c}")
