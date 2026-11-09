@@ -1,20 +1,34 @@
-name = "Bro"
-age = 21
-gpa = 1.9
-student = True
+# ------------------------------------------------
+# EXERCISE 1 MAD LIBS
+# ------------------------------------------------
+adjective1 = input("Enter an adjective: ")
+noun = input("Enter a noun: ")
+adjective2 = input("Enter an adjective: ")
+verb = input("Enter a verb: ")
+adjective3 = input("Enter an adjective: ")
 
-# Chuyển đổi sang float
-age = float(age)
-print(age)
+print(f"Today I went to a {adjective1} zoo.")
+print(f"In an exhibit, I saw {noun}.")
+print(f"{noun} was {adjective2} and {verb}ing.")
+print(f"I was {adjective3}!")
 
-# Chuyển đổi sang integer
-gpa = int(gpa)
-print(gpa)
+# ------------------------------------------------
+# EXERCISE 2 AREA CALC
+# ------------------------------------------------
+length = float(input("Enter the length: "))
+width = float(input("Enter the width: "))
 
-# Chuyển đổi sang string
-student = str(student)
-print(student)
+area = length * width
+print(f"The area is: {area}cm^2")
 
-# Chuyển đổi sang boolean
-name = bool(name)
-print(name)
+# ------------------------------------------------
+# EXERCISE 3 SHOPPING CART
+# ------------------------------------------------
+item = input("What item would you like to buy?: ")
+price = float(input("What is the price?: "))
+quantity = int(input("How many would you like?: "))
+
+total = price * quantity
+
+print(f"You have bought {quantity} x {item}/s")
+print(f"Your total is: ${round(total, 2)}")
