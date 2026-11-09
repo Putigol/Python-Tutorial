@@ -1,21 +1,42 @@
-# format specifiers = {:flags} format a value based on what flags are inserted
+#while loop = perform some code WHILE some condition remains true
 
-# .(number)f = round to that many decimal places
-# :(number) = allocate that many spaces
-# :0(number) = allocate and zero pad that many spaces
-# :< = left justify
-# :> = right justify
-# :^ = center align
-# :+ = use a plus sign to indicate positive value
-# := = place sign to leftmost position
-# :  = insert a space before positive numbers
-# :, = comma separator
-# :% = percentage format
+# ---------------- EXAMPLE 1 ----------------
 
-price1 = 3.14159
-price2 = -987.65
-price3 = 12.34
-print(f"price1 is: ${price1:}")
-print(f"price2 is: ${price2:}")
-print(f"price3 is: ${price3:}")
+name = input("Enter your name: ")
 
+while name == "":
+   print("You did not enter your name!")
+   name = input("Enter your name: ")
+
+print(f"Hello {name}")
+
+# ---------------- EXAMPLE 2 ----------------
+
+age = int(input("Enter your age: "))
+
+while age < 0:
+   print("Age can't be negative")
+   age = int(input("Enter your age: "))
+
+print(f"You are {age} years old")
+
+
+# ---------------- EXAMPLE 3 ----------------
+
+food = input("Enter a food you like (q to quit): ")
+
+while not food == "q":
+   print(f"You like {food}")
+   food = input("Enter another food you like (q to quit): ")
+
+print("bye")
+
+# ---------------- EXAMPLE 4 ----------------
+
+num = int(input("Enter a # between 1 - 10: "))
+
+while num < 1 or num > 10:
+    print(f"{num} is not valid")
+    num = int(input("Enter a # between 1 - 10: "))
+
+print(f"You picked the number {num}")
