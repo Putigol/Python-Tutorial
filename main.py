@@ -1,16 +1,19 @@
-# ---------- EXAMPLE 1 ----------
-def display_invoice(username, amount, due_date):
-    print(f"Hello {username}")
-    print(f"Your bill of ${amount:.2f} is due: {due_date}")
+# ---- EXAMPLE ----
+def net_price(list_price, discount=0, tax=0.05):
+   return list_price * (1 - discount) * (1 - tax)
 
-display_invoice("BroCode", 42.50, "01/02")
-display_invoice("JoeSchmo", 100.99, "02/03")
+print(net_price(500))
+print(net_price(500, 0.1))
+print(net_price(500, 0.1, 0))
 
-# ---------- EXAMPLE 2 ----------
-def create_name(first, last):
-    first = first.capitalize()
-    last = last.capitalize()
-    return first + " " + last
+# ---- EXERCISE ----
+import time
 
-full_name = create_name("spongebob", "squarepants")
-print(full_name)
+def count(end, start=0):
+    for x in range(start, end+1):
+        print(x)
+        time.sleep(1)
+    print("DONE!")
+
+count(10)
+count(30, 15)
