@@ -1,12 +1,38 @@
-import time
+# 1. List (Danh sách)
 
-my_time = int(input("Enter the time in seconds: "))
+# Khởi tạo list
+fruits = ["apple", "orange", "banana", "coconut"]
 
-for x in range(my_time, 0, -1):
-    seconds = x % 60
-    minutes = int(x / 60) % 60
-    hours = int(x / 3600)
-    print(f"{hours:02}:{minutes:02}:{seconds:02}")
-    time.sleep(1)
+# Truy cập phần tử
+print(fruits[0])  # Apple
 
-print("TIME'S UP!")
+# Thay đổi phần tử
+fruits[0] = "pineapple"
+
+# Các phương thức phổ biến
+fruits.append("pineapple")
+fruits.remove("pineapple")
+fruits.insert(0, "pineapple")
+fruits.sort()
+fruits.reverse()
+fruits.clear()
+
+# 2. Set (Tập hợp)
+
+# Khởi tạo set
+fruits = {"apple", "orange", "banana", "coconut"}
+
+# Các phương thức phổ biến
+fruits.add("pineapple")
+fruits.remove("apple")
+fruits.pop() # Xóa phần tử ngẫu nhiên
+fruits.clear()
+
+# 3. Tuple (Bộ giá trị)
+
+# Khởi tạo tuple
+fruits = ("apple", "orange", "banana", "coconut")
+
+# Các phương thức khả dụng
+fruits.index("apple")
+fruits.count("coconut")
