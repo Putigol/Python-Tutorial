@@ -1,38 +1,24 @@
-# 1. List (Danh sách)
 
-# Khởi tạo list
-fruits = ["apple", "orange", "banana", "coconut"]
+foods = []
+prices = []
+total = 0
 
-# Truy cập phần tử
-print(fruits[0])  # Apple
+while True:
+    food = input("Enter a food to buy (q to quit): ")
+    if food.lower() == "q":
+        break
+    else:
+        price = float(input(f"Enter the price of a {food}: $"))
+        foods.append(food)
+        prices.append(price)
 
-# Thay đổi phần tử
-fruits[0] = "pineapple"
+print("----- YOUR CART -----")
 
-# Các phương thức phổ biến
-fruits.append("pineapple")
-fruits.remove("pineapple")
-fruits.insert(0, "pineapple")
-fruits.sort()
-fruits.reverse()
-fruits.clear()
+for food in foods:
+    print(food, end=" ")
 
-# 2. Set (Tập hợp)
+for price in prices:
+    total += price
 
-# Khởi tạo set
-fruits = {"apple", "orange", "banana", "coconut"}
-
-# Các phương thức phổ biến
-fruits.add("pineapple")
-fruits.remove("apple")
-fruits.pop() # Xóa phần tử ngẫu nhiên
-fruits.clear()
-
-# 3. Tuple (Bộ giá trị)
-
-# Khởi tạo tuple
-fruits = ("apple", "orange", "banana", "coconut")
-
-# Các phương thức khả dụng
-fruits.index("apple")
-fruits.count("coconut")
+print()
+print(f"Your total is: ${total}")
