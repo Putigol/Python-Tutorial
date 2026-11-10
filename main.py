@@ -1,56 +1,30 @@
 import random
+import string
 
-dice_art = {
-    1: ("┌─────────┐",
-        "│         │",
-        "│    ●    │",
-        "│         │",
-        "└─────────┘"),
-    2: ("┌─────────┐",
-        "│  ●      │",
-        "│         │",
-        "│      ●  │",
-        "└─────────┘"),
-    3: ("┌─────────┐",
-        "│  ●      │",
-        "│    ●    │",
-        "│      ●  │",
-        "└─────────┘"),
-    4: ("┌─────────┐",
-        "│  ●   ●  │",
-        "│         │",
-        "│  ●   ●  │",
-        "└─────────┘"),
-    5: ("┌─────────┐",
-        "│  ●   ●  │",
-        "│    ●    │",
-        "│  ●   ●  │",
-        "└─────────┘"),
-    6: ("┌─────────┐",
-        "│  ●   ●  │",
-        "│  ●   ●  │",
-        "│  ●   ●  │",
-        "└─────────┘")
-}
+chars = " " + string.punctuation + string.digits + string.ascii_letters
+chars = list(chars)
+key = chars.copy()
 
-dice = []
-total = 0
-num_of_dice = int(input("How many dice?: "))
+random.shuffle(key)
 
-for die in range(num_of_dice):
-    dice.append(random.randint(1, 6))
+#ENCRYPT
+plain_text = input("Enter a message to encrypt: ")
+cipher_text = ""
 
-# PRINT VERTICALLY
-for die in range(num_of_dice):
-    for line in dice_art.get(dice[die]):
-        print(line)
+for letter in plain_text:
+    index = chars.index(letter)
+    cipher_text += key[index]
 
-# PRINT HORIZONTALLY
-for line in range(5):
-    for die in dice:
-        print(dice_art.get(die)[line], end="")
-    print()
+print(f"original message : {plain_text}")
+print(f"encrypted message: {cipher_text}")
 
-for die in dice:
-    total += die
-print(f"total: {total}")
+#DECRYPT
+cipher_text = input("Enter a message to encrypt: ")
+plain_text = ""
+
+for letter in cipher_text:
+    index = key.index(letter)
+    plain_text += chars[index]
+
+print(f"encrypted message: {cipher_text}")
+print(f"original message : {plain_text}")
