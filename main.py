@@ -1,30 +1,34 @@
+# Python number guessing game
 import random
 
-# Khởi tạo các biến
-low = 1
-high = 100
+lowest_num = 1
+highest_num = 100
+answer = random.randint(lowest_num, highest_num)
 guesses = 0
-number = random.randint(low, high)
+is_running = True
 
-# Chương trình đoán số
-while True:
-    guess = int(input(f"Enter a number between {low} through {high}: "))
-    guesses += 1
-    if guess < number:
-        print(f"{guess} is too low")
-    elif guess > number:
-        print(f"{guess} is to hi")
+print("Python Number Guessing Game")
+print(f"Select a number between {lowest_num} and {highest_num}")
+
+while is_running:
+
+    guess = input("Enter your guess: ")
+
+    if guess.isdigit():
+        guess = int(guess)
+        guesses += 1
+
+        if guess < lowest_num or guess > highest_num:
+            print("That number is out of range")
+            print(f"Please select a number between {lowest_num} and {highest_num}")
+        elif guess < answer:
+            print("Too low! Try again!")
+        elif guess > answer:
+            print("Too high! Try again!")
+        else:
+            print(f"CORRECT! The answer was {answer}")
+            print(f"Number of guesses: {guesses}")
+            is_running = False
     else:
-        print(f"{guess} is correct")
-    break
-print(f"This round took you {guesses} guesses")
-
-# Các ví dụ khác trong video
-options = ['Rock', 'Paper', 'Scissors']
-cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-
-number = random.random()
-number = random.randint(1, 6)
-number = random.randint(low, high)
-choice = random.choice(options)
-random.shuffle(cards)
+        print("Invalid guess")
+        print(f"Please select a number between {lowest_num} and {highest_num}")
