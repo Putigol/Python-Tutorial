@@ -1,21 +1,55 @@
-# Iterables = An object/collection that can return its elements one at a time,
-# allowing it to be iterated over in a loop
+# Membership operators = used to test whether a value or variable is found in a sequence
+# (string, list, tuple, set, or dictionary)
+# 1. in
+# 2. not in
 
-my_list = [1, 2, 3, 4, 5]
-my_tuple = (1, 2, 3, 4, 5)
-my_set = {"apple", "orange", "banana", "coconut"}
-my_name = "Bro Code"
-my_dictionary = {'A': 1, 'B': 2, 'C': 3}
+# --------------------
+# EXAMPLE 1
+# --------------------
+word = "APPLE"
 
-for item in my_list:
-    print(item)
+letter = input("Guess a letter in the secret word: ")
 
-# DICTIONARIES
-for key in my_dictionary:
-    print(key)
+if letter in word:
+   print(f"There is a {letter}")
+else:
+   print(f"{letter} was not found")
 
-for value in my_dictionary.values():
-    print(value)
+# --------------------
+# EXAMPLE 2
+# --------------------
+students = {"Spongebob", "Patrick", "Sandy"}
 
-for key, value in my_dictionary.items():
-    print(f"{key} = {value}")
+student = input("Enter the name of a student: ")
+
+if student in students:
+   print(f"{student} is in this class")
+else:
+   print(f"{student} is NOT in this class")
+
+# --------------------
+# EXAMPLE 3
+# --------------------
+grades = {
+   "Sandy": 'A',
+   "Squidward": 'B',
+   "Spongebob": 'C',
+   "Patrick": 'D'
+}
+
+student = input("Enter the name of a student: ")
+
+if student in grades:
+   print(f"{student}'s grade is {grades[student]}.")
+else:
+   print(f"{student} is not in the dictionary")
+
+# --------------------
+# EXAMPLE 4
+# --------------------
+email = "BroCode@gmail.com"
+
+if "@" in email and "." in email:
+    print("Valid email")
+else:
+    print("Invalid email")
