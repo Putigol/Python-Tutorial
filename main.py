@@ -1,24 +1,58 @@
+# 2D list of lists
+num_pad = [[1, 2, 3],
+                      [4, 5, 6],
+                      [7, 8, 9],
+                      ["*", 0, "#"]]
 
-foods = []
-prices = []
-total = 0
+# 2D list of tuples
+# num_pad = [(1, 2, 3),
+#                       (4, 5, 6),
+#                       (7, 8, 9),
+#                       ("*", 0, "#")]
 
-while True:
-    food = input("Enter a food to buy (q to quit): ")
-    if food.lower() == "q":
-        break
-    else:
-        price = float(input(f"Enter the price of a {food}: $"))
-        foods.append(food)
-        prices.append(price)
+# 2D list of sets
+# num_pad = [{1, 2, 3},
+#                       {4, 5, 6},
+#                       {7, 8, 9},
+#                       {"*", 0, "#"}]
 
-print("----- YOUR CART -----")
+# 2D tuple of lists
+# num_pad = ([1, 2, 3],
+#                       [4, 5, 6],
+#                       [7, 8, 9],
+#                       ["*", 0, "#"])
 
-for food in foods:
-    print(food, end=" ")
+# 2D tuple of tuples
+# num_pad = ((1, 2, 3),
+#                       (4, 5, 6),
+#                       (7, 8, 9),
+#                       ("*", 0, "#"))
 
-for price in prices:
-    total += price
+# 2D tuple of sets
+# num_pad = ({1, 2, 3},
+#                       {4, 5, 6},
+#                       {7, 8, 9},
+#                       {"*", 0, "#"})
 
-print()
-print(f"Your total is: ${total}")
+# 2D set of lists (NOT VALID)
+# num_pad = {[1, 2, 3],
+#                       [4, 5, 6],
+#                       [7, 8, 9],
+#                       ["*", 0, "#"]}
+
+# 2D set of tuples
+# num_pad = {(1, 2, 3),
+#                       (4, 5, 6),
+#                       (7, 8, 9),
+#                       ("*", 0, "#")}
+
+# 2D set of sets (NOT VALID)
+# num_pad = {{1, 2, 3},
+#                       {4, 5, 6},
+#                       {7, 8, 9},
+#                       {"*", 0, "#"}}
+
+for row in num_pad:
+    for num in row:
+        print(num, end=" ")
+    print()
