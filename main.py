@@ -1,52 +1,21 @@
-# ----- *ARGS Example 1 -----
+# Iterables = An object/collection that can return its elements one at a time,
+# allowing it to be iterated over in a loop
 
-def add(*nums):
-   total = 0
-   for num in nums:
-       total += num
-   return total
+my_list = [1, 2, 3, 4, 5]
+my_tuple = (1, 2, 3, 4, 5)
+my_set = {"apple", "orange", "banana", "coconut"}
+my_name = "Bro Code"
+my_dictionary = {'A': 1, 'B': 2, 'C': 3}
 
-print(add(1, 2, 3, 4))
+for item in my_list:
+    print(item)
 
-# ----- *ARGS Example 2 -----
+# DICTIONARIES
+for key in my_dictionary:
+    print(key)
 
-def display_name(*args):
-   print(f"Hello", end=" ")
-   for arg in args:
-       print(arg, end=" ")
+for value in my_dictionary.values():
+    print(value)
 
-display_name("Dr.", "Spongebob", "Harold", "Squarepants", "III")
-
-# ----- **KWARGS -----
-def print_address(**kwargs):
-    for value in kwargs.values():
-        print(value, end=" ")
-
-print_address(street="123 Fake St.",
-              pobox="P.O Box 777",
-              city="Detroit",
-              state="MI",
-              zip="54321")
-
-# ----- EXERCISE -----
-def shipping_label(*args, **kwargs):
-    for arg in args:
-        print(arg, end=" ")
-    print()
-
-    if "apt" in kwargs:
-        print(f"{kwargs.get('street')} {kwargs.get('apt')}")
-    elif "pobox" in kwargs:
-        print(f"{kwargs.get('street')}")
-        print(f"{kwargs.get('pobox')}")
-    else:
-        print(f"{kwargs.get('street')}")
-
-    print(f"{kwargs.get('city')}, {kwargs.get('state')} {kwargs.get('zip')}")
-
-shipping_label("Dr.", "Spongebob", "Squarepants",
-               street="123 Fake St.",
-               pobox="PO box #1001",
-               city="Detroit",
-               state="MI",
-               zip="54321")
+for key, value in my_dictionary.items():
+    print(f"{key} = {value}")
