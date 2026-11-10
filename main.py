@@ -1,23 +1,52 @@
-# keyword arguments = arguments prefixed with the names of parameters
-#                                        order of the arguments doesn’t matter
-#                                        helps with readability
+# ----- *ARGS Example 1 -----
 
-# ----- EXAMPLE 1 -----
-def hello(greeting, title, first, last):
-    print(f"{greeting} {title}{first} {last}")
+def add(*nums):
+   total = 0
+   for num in nums:
+       total += num
+   return total
 
-hello("Hello", title="Mr.", last="John", first="James")
+print(add(1, 2, 3, 4))
 
-# ----- EXAMPLE 2 -----
-for number in range(1, 11):
-    print(number, end=" ")
+# ----- *ARGS Example 2 -----
 
-print("1", "2", "3", "4", "5", sep="-")
+def display_name(*args):
+   print(f"Hello", end=" ")
+   for arg in args:
+       print(arg, end=" ")
+
+display_name("Dr.", "Spongebob", "Harold", "Squarepants", "III")
+
+# ----- **KWARGS -----
+def print_address(**kwargs):
+    for value in kwargs.values():
+        print(value, end=" ")
+
+print_address(street="123 Fake St.",
+              pobox="P.O Box 777",
+              city="Detroit",
+              state="MI",
+              zip="54321")
 
 # ----- EXERCISE -----
-def get_phone(country, area, first, last):
-    return f"{country}-{area}-{first}-{last}"
+def shipping_label(*args, **kwargs):
+    for arg in args:
+        print(arg, end=" ")
+    print()
 
-phone_num = get_phone(country=1, area=123, first=456, last=7890)
-print(phone_num)
+    if "apt" in kwargs:
+        print(f"{kwargs.get('street')} {kwargs.get('apt')}")
+    elif "pobox" in kwargs:
+        print(f"{kwargs.get('street')}")
+        print(f"{kwargs.get('pobox')}")
+    else:
+        print(f"{kwargs.get('street')}")
 
+    print(f"{kwargs.get('city')}, {kwargs.get('state')} {kwargs.get('zip')}")
+
+shipping_label("Dr.", "Spongebob", "Squarepants",
+               street="123 Fake St.",
+               pobox="PO box #1001",
+               city="Detroit",
+               state="MI",
+               zip="54321")
