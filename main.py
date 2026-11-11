@@ -1,14 +1,9 @@
-# Match-case statement (switch): An alternative to using many 'elif' statements
-#                                                          Execute some code if a value matches a 'case'
-#                                                          Benefits: cleaner and syntax is more readable
+import example
 
-def is_weekend(day):
-    match day:
-        case "Saturday" | "Sunday":
-            return True
-        case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
-            return False
-        case _:
-            return False
+result = example.pi
+result = example.square(3)
+result = example.cube(3)
+result = example.circumference(3)
+result = example.area(3)
 
-print(is_weekend("Sunday"))
+print(result)
