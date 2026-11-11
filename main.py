@@ -1,45 +1,52 @@
-# multiple inheritance = inherit from more than one parent class
-#                                        C(A, B)
+# Abstract class: A class that cannot be instantiated on its own; Meant to be subclassed.
+#                 They can contain abstract methods, which are declared but have no implementation.
+#                 Abstract classes benefits:
+#                 1. Prevents instantiation of the class itself
+#                 2. Requires children to use inherited abstract methods
 
-# multilevel inheritance = inherit from a parent which inherits from another parent
-#                                          C(B) <- B(A) <- A
+from abc import ABC, abstractmethod
 
-class Animal:
+class Vehicle(ABC):
 
-    def __init__(self, name):
-        self.name = name
+    @abstractmethod
+    def go(self):
+        pass
 
-    def eat(self):
-        print(f"{self.name} is eating")
+    @abstractmethod
+    def stop(self):
+        pass
 
-    def sleep(self):
-        print(f"{self.name} is sleeping")
+class Car(Vehicle):
 
-class Prey(Animal):
-    def flee(self):
-        print(f"{self.name} is fleeing")
+    def go(self):
+        print("You drive the car")
 
-class Predator(Animal):
-    def hunt(self):
-        print(f"{self.name} is hunting")
+    def stop(self):
+        print("You stop the car")
 
-class Rabbit(Prey):
-    pass
+class Motorcycle(Vehicle):
 
-class Hawk(Predator):
-    pass
+    def go(self):
+        print("You ride the motorcycle")
 
-class Fish(Prey, Predator):
-    pass
+    def stop(self):
+        print("You stop the motorcycle")
 
-rabbit = Rabbit("Bugs")
-hawk = Hawk("Tony")
-fish = Fish("Nemo")
+class Boat(Vehicle):
 
-rabbit.eat()
-hawk.eat()
-fish.eat()
+    def go(self):
+        print("You sail the boat")
 
-rabbit.sleep()
-hawk.sleep()
-fish.sleep()
+    def stop(self):
+        print("You anchor the boat")
+
+car = Car()
+motorcycle = Motorcycle()
+boat = Boat()
+
+car.go()
+motorcycle.go()
+boat.go()
+car.stop()
+motorcycle.stop()
+boat.stop()
