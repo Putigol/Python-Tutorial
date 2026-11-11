@@ -1,52 +1,47 @@
-# Abstract class: A class that cannot be instantiated on its own; Meant to be subclassed.
-#                 They can contain abstract methods, which are declared but have no implementation.
-#                 Abstract classes benefits:
-#                 1. Prevents instantiation of the class itself
-#                 2. Requires children to use inherited abstract methods
+# super() = Function used in a child class to call methods from a parent class (superclass).
+#                  Allows you to extend the functionality of the inherited methods
 
-from abc import ABC, abstractmethod
+class Shape:
+    def __init__(self, color, is_filled):
+        self.color = color
+        self.is_filled = is_filled
 
-class Vehicle(ABC):
+    def describe(self):
+        print(f"It is {self.color} and {'filled' if self.is_filled else 'not filled'}")
 
-    @abstractmethod
-    def go(self):
-        pass
+class Circle(Shape):
+    def __init__(self, color, is_filled, radius):
+        super().__init__(color, is_filled)
+        self.radius = radius
 
-    @abstractmethod
-    def stop(self):
-        pass
+    def describe(self):
+        print(f"It is a circle with an area of {3.14 * self.radius * self.radius}cm^2")
+        super().describe()
 
-class Car(Vehicle):
+class Square(Shape):
+    def __init__(self, color, is_filled, width):
+        super().__init__(color, is_filled)
+        self.width = width
 
-    def go(self):
-        print("You drive the car")
+    def describe(self):
+        print(f"It is a square with an area of {self.width * self.width}cm^2")
+        super().describe()
 
-    def stop(self):
-        print("You stop the car")
+class Triangle(Shape):
+    def __init__(self, color, is_filled, width, height):
+        super().__init__(color, is_filled)
+        self.width = width
+        self.height = height
 
-class Motorcycle(Vehicle):
+    def describe(self):
+        print(f"It is a triangle with an area of {self.width * self.height / 2}cm^2")
+        super().describe()
 
-    def go(self):
-        print("You ride the motorcycle")
+circle = Circle(color="red", is_filled=True, radius=5)
+square = Square(color="blue", is_filled=False, width=6)
+triangle = Triangle(color="yellow", is_filled=True, width=7, height=8)
 
-    def stop(self):
-        print("You stop the motorcycle")
+circle.describe()
+square.describe()
+triangle.describe()
 
-class Boat(Vehicle):
-
-    def go(self):
-        print("You sail the boat")
-
-    def stop(self):
-        print("You anchor the boat")
-
-car = Car()
-motorcycle = Motorcycle()
-boat = Boat()
-
-car.go()
-motorcycle.go()
-boat.go()
-car.stop()
-motorcycle.stop()
-boat.stop()
