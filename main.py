@@ -1,55 +1,20 @@
-# Membership operators = used to test whether a value or variable is found in a sequence
-# (string, list, tuple, set, or dictionary)
-# 1. in
-# 2. not in
+# List comprehension = A concise way to create lists in Python
+#                                        Compact and easier to read than traditional loops
+#                                        [expression for value in iterable if condition]
 
-# --------------------
-# EXAMPLE 1
-# --------------------
-word = "APPLE"
+doubles = [x * 2 for x in range(1, 11)]
+triples = [y * 3 for y in range(1, 11)]
+squares = [z * z for z in range(1, 11)]
 
-letter = input("Guess a letter in the secret word: ")
+fruits = ["apple", "orange", "banana", "coconut"]
+uppercase_words = [fruit.upper() for fruit in fruits]
+fruit_chars = [fruit[0] for fruit in fruits]
 
-if letter in word:
-   print(f"There is a {letter}")
-else:
-   print(f"{letter} was not found")
+numbers = [1, -2, 3, -4, 5, -6, 8, -7]
+positive_numbers = [x for x in numbers if x >= 0]
+negative_numbers = [x for x in numbers if x < 0]
+even_numbers = [x for x in numbers if x % 2 == 0]
+odd_numbers = [x for x in numbers if x % 2 == 1]
 
-# --------------------
-# EXAMPLE 2
-# --------------------
-students = {"Spongebob", "Patrick", "Sandy"}
-
-student = input("Enter the name of a student: ")
-
-if student in students:
-   print(f"{student} is in this class")
-else:
-   print(f"{student} is NOT in this class")
-
-# --------------------
-# EXAMPLE 3
-# --------------------
-grades = {
-   "Sandy": 'A',
-   "Squidward": 'B',
-   "Spongebob": 'C',
-   "Patrick": 'D'
-}
-
-student = input("Enter the name of a student: ")
-
-if student in grades:
-   print(f"{student}'s grade is {grades[student]}.")
-else:
-   print(f"{student} is not in the dictionary")
-
-# --------------------
-# EXAMPLE 4
-# --------------------
-email = "BroCode@gmail.com"
-
-if "@" in email and "." in email:
-    print("Valid email")
-else:
-    print("Invalid email")
+grades = [85, 42, 79, 90, 56, 61, 30]
+passing_grades = [grade for grade in grades if grade >= 60]
