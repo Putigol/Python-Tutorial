@@ -1,9 +1,45 @@
-import example
+# ----- LOCAL -----
 
-result = example.pi
-result = example.square(3)
-result = example.cube(3)
-result = example.circumference(3)
-result = example.area(3)
+def func1():
+    x = 1 #local
+    print(x)
 
-print(result)
+def func2():
+    x = 2 #local
+    print(x)
+
+func1()
+func2()
+
+# ----- ENCLOSED -----
+
+def func1():
+    x = 1 #enclosed
+
+    def func2():
+        print(x)
+    func2()
+
+func1()
+
+# ----- GLOBAL -----
+
+def func1():
+    print(x)
+
+def func2():
+    print(x)
+
+x = 3 #global
+
+func1()
+func2()
+
+# ----- BUILT-IN -----
+
+from math import e
+
+def func1():
+    print(e)
+
+func1()
