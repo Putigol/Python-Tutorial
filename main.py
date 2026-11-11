@@ -1,42 +1,22 @@
-# @property = Decorator used to define a method as a property (it can be accessed like an attribute)
-#                        Benefit: Add additional logic when you read, write, or delete attributes
-#                        Gives you a getter, setter, and deleter method
+# Lambda function = A small anonymous function for a one time use (throw away function)
+#                                    They take any number of arguments, but have only 1 expression
+#                                    Helps keep the namespace clean and is useful with higher-order functions
+#                                    'sort()', 'map()', 'filter()', 'reduce()'
+#                                    lambda parameters: expression
 
-class Rectangle:
-    def __init__(self, width, height):
-        self._width = width
-        self._height = height
+double = lambda x: x * 2
+add = lambda x, y: x + y
+max_value = lambda x, y: x if x > y else y
+min_value = lambda x, y: x if x < y else y
+full_name = lambda first, last: first + " " + last
+is_even = lambda x: x % 2 == 0
+age_check = lambda age: True if age >= 18 else False
 
-    @property
-    def width(self):
-        return f"{self._width:.1f}cm"
+print(double(2))
+print(add(3, 4))
+print(max_value(6, 7))
+print(min_value(9, 8))
+print(full_name("Spongebob", "Squarepants"))
+print(is_even(5))
+print(age_check(21))
 
-    @property
-    def height(self):
-        return f"{self._height:.1f}cm"
-
-    @width.setter
-    def width(self, new_width):
-        if new_width > 0:
-            self._width = new_width
-        else:
-            print("Width must be greater than zero")
-
-    @height.setter
-    def height(self, new_height):
-        if new_height > 0:
-            self._height = new_height
-        else:
-            print("Height must be greater than zero")
-
-    @width.deleter
-    def width(self):
-        del self._width
-        print("Width has been deleted")
-
-    @height.deleter
-    def height(self):
-        del self._height
-        print("Height has been deleted")
-
-rectangle = Rectangle(3, 4)
