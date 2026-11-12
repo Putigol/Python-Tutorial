@@ -1,29 +1,32 @@
-# Iterator = An object that returns elements one at a time
-#                  from a sequence (or data stream)
-#                  and remembers its position between calls.
-#                  A Python object is an iterator if it has:
-#                 __iter__() → Returns the iterator object itself
-#                 __next__() → Returns the next item in the sequence
-#                                        (raises StopIteration when there's no more items)
+# Generator = Function that behaves like an iterator (it can be used in a for loop)
+#                      Pauses a function, returns a value, then resumes
+#                      Uses 'yield' instead or 'return'
+#                      Iterate without loading everything into memory (ex. reading large files)
+#                      return = Pouring bucket
+#                      yield = Drip faucet
 
-import random
+# ---------- EXAMPLE 1 ----------
 
-class Dice:
-    def __init__(self, rolls):
-        self.rolls = rolls
-        self.count = 0
+def count_to(n):
+   count = 1
+   while count <= n:
+       yield count  # Pause here and return the current value
+       count += 1
 
-    def __iter__(self):
-        return self
+number = int(input("Enter a number to count up to: "))
 
-    def __next__(self):
-        if self.count < self.rolls:
-            self.count+=1
-            return random.randint(1, 6)
-        else:
-            raise StopIteration
+for n in count_to(number):
+   print(n)
 
-dice = Dice(3)
+# ---------- EXAMPLE 2 ----------
 
-for die in dice:
-    print(die)
+def read_file(file_path):
+   with open(file_path) as file:
+       for line in file:
+           yield line.strip()
+
+filepath = "C:\\Users\\HP\\Desktop\\test.txt"
+
+for line in read_file(filepath):
+   print(line)
+
