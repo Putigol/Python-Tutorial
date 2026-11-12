@@ -1,14 +1,17 @@
-# HOW TO MEASURE EXECUTION TIME IN PYTHON
+import datetime
 
-import time
+date = datetime.date(2025, 1, 2)
+today = datetime.date.today()
 
-start_time = time.perf_counter()
+time = datetime.time(12, 30, 0)
+now = datetime.datetime.now()
 
-# YOUR CODE GOES HERE
+now = now.strftime("%H:%M:%S %m-%d-%Y")
 
-end_time = time.perf_counter()
+target_datetime = datetime.datetime(2030, 1, 2, 12, 30, 1)
+current_datetime = datetime.datetime.now()
 
-elapsed_time = end_time - start_time
-
-print(f"Elapsed time: {elapsed_time:.1f} seconds")
-
+if target_datetime < current_datetime:
+    print("Target date has passed")
+else:
+    print("Target date has NOT passed")
