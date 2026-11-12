@@ -1,52 +1,14 @@
-# Python writing files (.txt, .json, .csv)
+# HOW TO MEASURE EXECUTION TIME IN PYTHON
 
-# --------- .txt ---------
-txt_data = "I like pizza!"
+import time
 
-file_path = "output.txt"
+start_time = time.perf_counter()
 
-try:
-   with open(file_path, 'w') as file:
-      file.write(txt_data)
-      print(f".txt file '{file_path}' has been created successfully")
-except FileExistsError:
-   print("That file already exists")
+# YOUR CODE GOES HERE
 
-# --------- .json ---------
+end_time = time.perf_counter()
 
-import json
+elapsed_time = end_time - start_time
 
-employee = {
-   "name": "Spongebob",
-   "age": 30,
-   "job": "Cook"
-}
+print(f"Elapsed time: {elapsed_time:.1f} seconds")
 
-file_path = "output.json"
-
-try:
-    with open(file_path, 'w') as file:
-        json.dump(employee, file, indent=4)
-
-    print(f"JSON file '{file_path}' has been created successfully")
-except FileExistsError:
-    print("That file already exists!")
-
-# --------- .csv---------
-import csv
-
-employees = [["Name", "Age", "Job"],
-             ["Spongebob", 30, "Cook"],
-             ["Patrick", 37, "Unemployed"],
-             ["Sandy", 27, "Scientist"]]
-
-file_path = "output.csv"
-
-try:
-    with open(file_path, "w", newline="") as file:
-        writer = csv.writer(file)
-        for row in employees:
-            writer.writerow(row)
-        print(f"csv file '{file_path}' was created")
-except FileExistsError:
-    print("That file already exists!")
