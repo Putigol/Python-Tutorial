@@ -1,34 +1,29 @@
-# Python Alarm Clock
-import time
-import datetime
-import pygame
+# Iterator = An object that returns elements one at a time
+#                  from a sequence (or data stream)
+#                  and remembers its position between calls.
+#                  A Python object is an iterator if it has:
+#                 __iter__() → Returns the iterator object itself
+#                 __next__() → Returns the next item in the sequence
+#                                        (raises StopIteration when there's no more items)
 
+import random
 
-def set_alarm(alarm_time):
-    print(f"Alarm set for {alarm_time}")
-    sound_file = "my_music.mp3"
-    is_running = True
+class Dice:
+    def __init__(self, rolls):
+        self.rolls = rolls
+        self.count = 0
 
-    while is_running:
-        current_time = datetime.datetime.now().strftime("%H:%M:%S")
-        print(current_time)
+    def __iter__(self):
+        return self
 
-        if current_time == alarm_time:
-            print("WAKE UP! 😴")
+    def __next__(self):
+        if self.count < self.rolls:
+            self.count+=1
+            return random.randint(1, 6)
+        else:
+            raise StopIteration
 
-            pygame.mixer.init()
-            pygame.mixer.music.load(sound_file)
-            pygame.mixer.music.play()
+dice = Dice(3)
 
-            while pygame.mixer.music.get_busy():
-                time.sleep(1)
-
-            is_running = False
-
-        time.sleep(1)
-
-
-if __name__ == "__main__":
-    alarm_time = input("Enter the alarm time (HH:MM:SS): ")
-    set_alarm(alarm_time)
-
+for die in dice:
+    print(die)
