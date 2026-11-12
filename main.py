@@ -1,32 +1,32 @@
-# Generator = Function that behaves like an iterator (it can be used in a for loop)
-#                      Pauses a function, returns a value, then resumes
-#                      Uses 'yield' instead or 'return'
-#                      Iterate without loading everything into memory (ex. reading large files)
-#                      return = Pouring bucket
-#                      yield = Drip faucet
+# Generator Expression = Similar to a list comprehension but uses () instead of []
+#                                           Creates a generator (iterator) that yields values one at a time
+#                                           No need to define a function or use yield
+#                                           Less flexible than a gen func and not reusable
+#                                           gen object = (expression for value in iterable if condition)
 
 # ---------- EXAMPLE 1 ----------
 
-def count_to(n):
-   count = 1
-   while count <= n:
-       yield count  # Pause here and return the current value
-       count += 1
-
 number = int(input("Enter a number to count up to: "))
 
-for n in count_to(number):
+counter = (count for count in range(1, number + 1))
+
+for n in counter:
    print(n)
 
 # ---------- EXAMPLE 2 ----------
 
-def read_file(file_path):
-   with open(file_path) as file:
-       for line in file:
-           yield line.strip()
+file_path = "C:\\Users\\HP\\Desktop\\test.txt"
 
-filepath = "C:\\Users\\HP\\Desktop\\test.txt"
+with open(file_path) as file:
+   lines = (line.strip() for line in file)
+   for line in lines:
+       print(line)
 
-for line in read_file(filepath):
-   print(line)
+# ---------- EXAMPLE 3 ----------
 
+number = int(input("Enter a number to square up to: "))
+
+even_squares = (x**2 for x in range(1, number + 1) if x % 2 == 0)
+
+for square in even_squares:
+   print(square)
