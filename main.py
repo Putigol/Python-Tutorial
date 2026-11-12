@@ -1,24 +1,33 @@
-# Data Class = A special kind of class that's designed mostly for holding data
-#                        without writing a lot of the boilerplate code for regular classes.
-#                        They automatically generate: _init__, __repr__, __eq_
-#                       (Python 3.7+)
+# multithreading = Used to perform multiple tasks concurrently (multitasking)
+#                               Good for I/O bound tasks like reading files or fetching data from APIs
 
-from dataclasses import dataclass, field
+import threading
+import time
 
-@dataclass
-class Person:
-    name: str
-    age: int
-    password: str = field(repr=False)
-    is_alive: bool = True
+def walk_dog(first, last):
+   time.sleep(8)
+   print(f"You finish walking {first} {last}")
 
-    def __post_init__(self):
-        if self.age < 0:
-            raise ValueError("Age cannot be negative")
+def take_out_trash():
+   time.sleep(2)
+   print("You take out the trash")
 
-person1 = Person("Spongebob", 30, "pineapple1")
-person2 = Person("Patrick", 35, "password")
+def get_mail():
+   time.sleep(4)
+   print("You get the mail")
 
-print(person1)
-print(person2)
-print(person1 == person2)
+chore1 = threading.Thread(target=walk_dog, args=("Scooby", "Doo"))
+chore1.start()
+
+chore2 = threading.Thread(target=take_out_trash)
+chore2.start()
+
+chore3 = threading.Thread(target=get_mail)
+chore3.start()
+
+# .join() ensures that all tasks are completed before proceeding
+chore1.join()
+chore2.join()
+chore3.join()
+
+print("All chores are complete!")
