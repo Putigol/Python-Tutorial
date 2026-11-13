@@ -1,33 +1,20 @@
-# multithreading = Used to perform multiple tasks concurrently (multitasking)
-#                               Good for I/O bound tasks like reading files or fetching data from APIs
+# PyQt5 introduction
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow
 
-import threading
-import time
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("My cool first GUI")
+        self.setGeometry(700, 300, 500, 500)
+        #self.setWindowIcon(QIcon("profile_pic.jpg"))
 
-def walk_dog(first, last):
-   time.sleep(8)
-   print(f"You finish walking {first} {last}")
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())
 
-def take_out_trash():
-   time.sleep(2)
-   print("You take out the trash")
+if __name__ == "__main__":
+    main()
 
-def get_mail():
-   time.sleep(4)
-   print("You get the mail")
-
-chore1 = threading.Thread(target=walk_dog, args=("Scooby", "Doo"))
-chore1.start()
-
-chore2 = threading.Thread(target=take_out_trash)
-chore2.start()
-
-chore3 = threading.Thread(target=get_mail)
-chore3.start()
-
-# .join() ensures that all tasks are completed before proceeding
-chore1.join()
-chore2.join()
-chore3.join()
-
-print("All chores are complete!")
